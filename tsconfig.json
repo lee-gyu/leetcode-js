@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "lib": ["ES2015", "DOM"],
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
