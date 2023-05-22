@@ -3,25 +3,24 @@
 type F = () => Promise<any>;
 
 function promisePool(functions: F[], n: number): Promise<any> {
-    const promiseIter = functions[Symbol.iterator]();
-    let { length } = functions;
+  const promiseIter = functions[Symbol.iterator]();
+  let { length } = functions;
 
-    return new Promise<void>((resolve) => {
-        function execPromise() {
-            const current = promiseIter.next();
+  return new Promise<void>((resolve) => {
+    function execPromise() {
+      const current = promiseIter.next();
 
-            if (current.done) {
-                length === 0 && resolve();
-                return;
-            }
+      if (current.done) {
+        length === 0 && resolve();
+        return;
+      }
 
-            current.value().finally(() => {
-                --length;
-                execPromise();
-            });
-        }
+      current.value().finally(() => {
+        --length;
+        execPromise();
+      });
+    }
 
-        for(let i=0; i<n; ++i)
-            execPromise();
-    })
-};
+    for (let i = 0; i < n; ++i) execPromise();
+  });
+}

@@ -3,26 +3,26 @@
 // 인자는 숫자만 온다.
 // TODO key를 조금 더 효율적으로 처리
 
-type Fn = (...params: any) => any
+type Fn = (...params: any) => any;
 
 function getMemoKey(args: any[]) {
-    return args.join("|");
+  return args.join('|');
 }
 
 function memoize(fn: Fn): Fn {
-    const memoMap = new Map();
-    
-    return function(...args) {
-        const key = getMemoKey(args);
+  const memoMap = new Map();
 
-        if (memoMap.has(key)) return memoMap.get(key);
+  return function (...args) {
+    const key = getMemoKey(args);
 
-        const fnEval = fn(...args);
+    if (memoMap.has(key)) return memoMap.get(key);
 
-        memoMap.set(key, fnEval);
+    const fnEval = fn(...args);
 
-        return fnEval;
-    }
+    memoMap.set(key, fnEval);
+
+    return fnEval;
+  };
 }
 
 export {};

@@ -4,18 +4,18 @@
 type F = (x: number) => number;
 
 function compose(functions: F[]): F {
-	return function(x) {
-        let pop = functions.pop();
-        let result = x;
+  return function (x) {
+    let pop = functions.pop();
+    let result = x;
 
-        while (pop) {
-            result = pop(result);
-            pop = functions.pop();
-        }
-
-        return result;
+    while (pop) {
+      result = pop(result);
+      pop = functions.pop();
     }
-};
+
+    return result;
+  };
+}
 
 /**
  * const fn = compose([x => x + 1, x => 2 * x])
