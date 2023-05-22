@@ -24,3 +24,5 @@ function memoize(fn: Fn): Fn {
         return fnEval;
     }
 }
+
+export {};

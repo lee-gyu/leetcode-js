@@ -10,3 +10,6 @@ function reduce(nums: number[], fn: Fn, init: number): number {
     
     return accum;
 };
+
+// to avoid duplicate identifier error
+export {};
