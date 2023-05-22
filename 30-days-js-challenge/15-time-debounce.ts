@@ -1,7 +1,7 @@
 type F = (...p: any[]) => any
 
 function debounce(fn: F, t: number): F {
-    let timerHandler: any = -1;
+    let timerHandler: ReturnType<typeof setTimeout> = -1;
 
     return function(...args) {
         clearTimeout(timerHandler);

@@ -6,12 +6,12 @@ function promisePool(functions: F[], n: number): Promise<any> {
     const promiseIter = functions[Symbol.iterator]();
     let { length } = functions;
 
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
         function execPromise() {
             const current = promiseIter.next();
 
             if (current.done) {
-                length === 0 && resolve(0);
+                length === 0 && resolve();
                 return;
             }
 

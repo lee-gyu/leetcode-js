@@ -1,5 +1,5 @@
 class TimeLimitedCache {
-    #_cacheMap: Map<number, {value: number, timeoutHandler: any}> = new Map();
+    #_cacheMap: Map<number, {value: number, timeoutHandler: ReturnType<typeof setTimeout>}> = new Map();
 
     constructor() { }
 
