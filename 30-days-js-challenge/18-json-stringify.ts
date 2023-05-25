@@ -48,6 +48,9 @@ function jsonStringify(object: any): string {
  *
  * 메모리 적인 이득: primitive type이 빠름 (Array는 Heap에 저장되기 때문)
  * 성능적인 이득: push 및 join이 빠름
+ * 단, 일부 케이스에 따라 다르다.
+ * 짧으면 string concat이 유리하고, 길면 join이 유리하다.
+ * https://joshua1988.github.io/web-development/javascript/javascript-best-practices/
  *
  */
 
