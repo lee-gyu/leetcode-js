@@ -1,3 +1,5 @@
+import { printTestTime } from "./utils.mjs"
+
 const bl = true;
 const TEST_LENGTH = 500000000;
 
@@ -20,16 +22,7 @@ function benchmark_for_and() {
   }
 }
 
-function printDuration(label, fn, loop) {
-  console.time(label)
-
-  for (let index = 0; index < loop; index++)
-    fn();
-
-  console.timeLog(label)
-}
-
-// printDuration("and", benchmark_for_and, 10)
+printTestTime("and", benchmark_for_and, 10)
 // printDuration("if", benchmark_for_if, 10)
 
 /**
