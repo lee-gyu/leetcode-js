@@ -1,5 +1,9 @@
-const msg =
-  "ASIDJIAUCJAOSICNMOQIWJEPOQASPKODIJOQWIDNLZKJCNLKAJSNXPOQIWMDPOIQWJKDPOIJAOCJASNCLKZXCASDDJQWPOIJIWJEDOPQJW";
+const CASES = [
+  // small
+  "abcdef",
+  // medium
+  "abcdefghijklmnopqrstuvwxyz01234567890_+!)@!(#*$&%^abcdefghijklmnopqrstuvwxyz01234567890_+!)@!(#*$&%^abcdefghijklmnopqrstuvwxyz01234567890_+!)@!(#*$&%^",
+]
 
 const clone_array_exchange_join = (str) => {
   const strArr = [...str];
@@ -41,6 +45,26 @@ const clone_array_reverse_join = (str) => {
   return [...str].reverse().join("");
 };
 
+const array_push_join = (str) => {
+  const strArr = [];
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    strArr.push(str[i]);
+  }
+
+  return strArr.join("");
+}
+
+const str_concat = (str) => {
+  let reversedStr = "";
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversedStr += str[i];
+  }
+
+  return reversedStr;
+}
+
 const testPerformance = (fn, str) => {
   const startTime = performance.now();
 
@@ -48,16 +72,22 @@ const testPerformance = (fn, str) => {
     fn(str);
   }
 
-  fn(str);
   const endTime = performance.now();
   return endTime - startTime;
 };
 
-console.log("clone_array_exchange_join", testPerformance(clone_array_exchange_join, msg));
-console.log("array_map_join", testPerformance(array_map_join, msg));
-console.log("empty_array_exchange_join", testPerformance(empty_array_exchange_join, msg));
-console.log("generator_join", testPerformance(generator_join, msg));
-console.log("clone_array_reverse_join", testPerformance(clone_array_reverse_join, msg));
+CASES.forEach((msg, id) => {
+  console.log("---");
+  console.log(`#${id} clone_array_exchange_join`, testPerformance(clone_array_exchange_join, msg));
+  console.log(`#${id} array_map_join`, testPerformance(array_map_join, msg));
+  console.log(`#${id} empty_array_exchange_join`, testPerformance(empty_array_exchange_join, msg));
+  console.log(`#${id} generator_join`, testPerformance(generator_join, msg));
+  console.log(`#${id} clone_array_reverse_join`, testPerformance(clone_array_reverse_join, msg));
+  console.log(`#${id} array_push_join`, testPerformance(array_push_join, msg));
+  // the best performance
+  console.log("str_concat", testPerformance(str_concat, msg));
+})
+
 
 /**
  * Array.prototype.reverse() is the fastest way to reverse a string
