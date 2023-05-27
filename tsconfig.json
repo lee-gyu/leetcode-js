@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "dist/",
     "strict": false,
     "target": "ES2022",
     "lib": ["ES2022", "DOM"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    "allowJs": true
   },
   "include": [
     "**/*.ts"
-  ]
+, "30-days-js-challenge/23-this-array-prototype-last.js"  ]
 }
