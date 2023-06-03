@@ -10,5 +10,5 @@
   },
   "include": [
     "**/*.ts"
-, "30-days-js-challenge/23-this-array-prototype-last.js"  ]
+  ]
 }
